@@ -5,7 +5,9 @@ resource "aws_vpc" "mainvpc" {
   instance_tenancy     = "default"
   enable_dns_hostnames = true
   enable_dns_support   = true
-
+  tags = {
+    Name = "${var.project_name} VPC"
+  }
 }
 
 # Creating Internet Gateway
@@ -21,7 +23,8 @@ resource "aws_subnet" "publicsubnet" {
   availability_zone       = tolist(each.value)[2]
   map_public_ip_on_launch = true
   tags = {
-    Name = tolist(each.value)[0]
+    Name    = tolist(each.value)[0]
+    Project = var.project_name
   }
 }
 
@@ -33,7 +36,8 @@ resource "aws_subnet" "appsubnets" {
   availability_zone       = tolist(each.value)[2]
   map_public_ip_on_launch = false
   tags = {
-    Name = tolist(each.value)[0]
+    Name    = tolist(each.value)[0]
+    Project = var.project_name
   }
 }
 
@@ -45,6 +49,7 @@ resource "aws_subnet" "dbsubnets" {
   availability_zone       = tolist(each.value)[2]
   map_public_ip_on_launch = false
   tags = {
-    Name = tolist(each.value)[0]
+    Name    = tolist(each.value)[0]
+    Project = var.project_name
   }
 }

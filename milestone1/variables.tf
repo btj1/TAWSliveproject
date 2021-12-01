@@ -1,3 +1,10 @@
+variable "project_name" {
+  type        = string
+  default     = "liveproject_TAWS"
+  description = "Name for the live_project"
+
+}
+
 variable "region" {
   type        = string
   default     = "us-east-1"
