@@ -2,15 +2,14 @@ variable "project_name" {
   type        = string
   default     = "liveproject_TAWS"
   description = "Name for the live_project"
-
 }
 
 variable "region" {
   type        = string
   default     = "us-east-1"
   description = "Region to deploy the Stack in"
-
 }
+
 variable "publicsubnets" {
   type = object({
 
@@ -31,6 +30,7 @@ variable "vpc_cidr" {
   default     = "172.16.0.0/16"
   description = "CIDR Range to use for the VPC"
 }
+
 variable "dbsubnets" {
   type = object({
 
@@ -46,6 +46,7 @@ variable "dbsubnets" {
   }
   description = "CIDRs for the public subnets, note that the nr of subnets determines the nr. of EIPs and NAT_GWs as well"
 }
+
 variable "appsubnets" {
   type = object({
 
@@ -61,5 +62,8 @@ variable "appsubnets" {
   }
   description = "Infos for the Appsubnets, note that the nr of subnets determines the nr. of EIPs and NAT_GWs as well"
 }
+
+
+
 
 
